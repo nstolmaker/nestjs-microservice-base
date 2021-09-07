@@ -9,7 +9,6 @@ import {
 } from '@nestjs/common';
 import { SensorDataService } from './sensor-data.service';
 import { CreateSensorDatumDto } from './dto/create-sensor-datum.dto';
-import { UpdateSensorDatumDto } from './dto/update-sensor-datum.dto';
 
 @Controller('sensor-data')
 export class SensorDataController {
@@ -28,14 +27,6 @@ export class SensorDataController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.sensorDataService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateSensorDatumDto: UpdateSensorDatumDto,
-  ) {
-    return this.sensorDataService.update(+id, updateSensorDatumDto);
   }
 
   @Delete(':id')

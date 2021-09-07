@@ -9,9 +9,8 @@ export class SensorDatum {
   data: string;
 
   @Column({ type: 'timestamp' })
-  date: string;
+  date: Date;
 
   @Column({ default: true })
   isActive: boolean;
-  save: any;
 }

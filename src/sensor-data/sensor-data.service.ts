@@ -14,27 +14,23 @@ export class SensorDataService {
 
   create(createSensorDatumDto: CreateSensorDatumDto): Promise<SensorDatum> {
     const sensorObj = {
-      testing: true,
+      moisture: '69',
     };
     const sData = new SensorDatum();
-    sData.date = Date.now().toLocaleString();
-    sData.data = JSON.stringify(sensorObj);
+    sData.date = new Date();
+    sData.data = JSON.stringify(sensorObj); //createSensorDatumDto
     return this.sensorDataRepository.save(sData);
   }
 
-  findAll() {
-    return `This action returns all sensorData`;
+  findAll(): Promise<SensorDatum[]> {
+    return this.sensorDataRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} sensorDatum`;
+    return this.sensorDataRepository.findByIds([id]);
   }
 
-  update(id: number, updateSensorDatumDto: UpdateSensorDatumDto) {
-    return `This action updates a #${id} sensorDatum`;
-  }
-
-  remove(id: number): Promise<string> {
-    return Promise.resolve(`This action removes a #${id} sensorDatum`);
+  async remove(id: number): Promise<void> {
+    await this.sensorDataRepository.delete(id);
   }
 }
