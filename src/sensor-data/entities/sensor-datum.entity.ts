@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { CreateSensorDatumDto } from '../dto/create-sensor-datum.dto';
 
 @Entity()
 export class SensorDatum {
@@ -6,7 +7,7 @@ export class SensorDatum {
   id: number;
 
   @Column()
-  data: string;
+  data: CreateSensorDatumDto;
 
   @Column({ type: 'timestamp' })
   date: Date;

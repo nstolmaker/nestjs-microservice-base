@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Connection } from 'typeorm';
 import { SensorDatum } from './sensor-data/entities/sensor-datum.entity';
 import { SensorDataModule } from './sensor-data/sensor-data.module';
+import { ConfigModule } from '@nestjs/config';
 
 // @Module({
 //   imports: [SensorDataModule],
@@ -14,13 +15,14 @@ import { SensorDataModule } from './sensor-data/sensor-data.module';
 // })
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'postgres',
-      port: 5432,
-      username: 'dbuser',
-      password: 'password3000',
-      database: 'birdsnest_db',
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT as unknown as number,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE_NAME,
       entities: [SensorDatum],
       synchronize: true,
       // autoLoadEntities: true,

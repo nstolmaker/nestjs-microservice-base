@@ -13,12 +13,9 @@ export class SensorDataService {
   ) {}
 
   create(createSensorDatumDto: CreateSensorDatumDto): Promise<SensorDatum> {
-    const sensorObj = {
-      moisture: '69',
-    };
     const sData = new SensorDatum();
     sData.date = new Date();
-    sData.data = JSON.stringify(sensorObj); //createSensorDatumDto
+    sData.data = createSensorDatumDto; //createSensorDatumDto
     return this.sensorDataRepository.save(sData);
   }
 
