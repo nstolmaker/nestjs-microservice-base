@@ -15,7 +15,7 @@ export class SensorDataService {
   create(createSensorDatumDto: CreateSensorDatumDto): Promise<SensorDatum> {
     const sData = new SensorDatum();
     sData.date = new Date();
-    sData.data = createSensorDatumDto; //createSensorDatumDto
+    sData.data = JSON.stringify(createSensorDatumDto); //createSensorDatumDto
     return this.sensorDataRepository.save(sData);
   }
 
