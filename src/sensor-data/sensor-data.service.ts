@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateSensorDatumDto } from './dto/create-sensor-datum.dto';
-import { UpdateSensorDatumDto } from './dto/update-sensor-datum.dto';
 import { SensorDatum } from './entities/sensor-datum.entity';
 
 @Injectable()
