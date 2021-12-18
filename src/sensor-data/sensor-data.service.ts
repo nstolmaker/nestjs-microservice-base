@@ -26,6 +26,10 @@ export class SensorDataService {
     return this.sensorDataRepository.findByIds([id]);
   }
 
+  getLatest(): Promise<SensorDatum> {
+    return this.sensorDataRepository.findOne({ order: { id: 'DESC' } });
+  }
+
   async remove(id: number): Promise<void> {
     await this.sensorDataRepository.delete(id);
   }

@@ -11,14 +11,19 @@ export class SensorDataController {
     return this.sensorDataService.create(createSensorDatumDto);
   }
 
-  @Get()
+  @Get('all')
   findAll() {
     return this.sensorDataService.findAll();
   }
 
-  @Get(':id')
+  @Get('id/:id')
   findOne(@Param('id') id: string) {
     return this.sensorDataService.findOne(+id);
+  }
+
+  @Get()
+  getLatest() {
+    return this.sensorDataService.getLatest();
   }
 
   @Delete(':id')
