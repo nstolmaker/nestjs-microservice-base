@@ -21,6 +21,15 @@ export class ActionHistoryService {
     return this.actionHistoryRepository.find();
   }
 
+  getRecent(): Promise<ActionHistoryDatum[]> {
+    return this.actionHistoryRepository.find({
+      order: {
+        date: 'DESC',
+      },
+      take: 100,
+    });
+  }
+
   findOne(id: number) {
     return this.actionHistoryRepository.findByIds([id]);
   }

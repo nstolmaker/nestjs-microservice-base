@@ -12,11 +12,16 @@ export class ActionHistoryController {
   }
 
   @Get()
+  getRecent() {
+    return this.actionHistoryService.getRecent();
+  }
+
+  @Get('all')
   findAll() {
     return this.actionHistoryService.findAll();
   }
 
-  @Get(':id')
+  @Get('id/:id')
   findOne(@Param('id') id: string) {
     return this.actionHistoryService.findOne(+id);
   }
