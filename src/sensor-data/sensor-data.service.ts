@@ -33,4 +33,8 @@ export class SensorDataService {
   async remove(id: number): Promise<void> {
     await this.sensorDataRepository.delete(id);
   }
+
+  async clear(): Promise<void> {
+    this.sensorDataRepository.createQueryBuilder().softDelete();
+  }
 }

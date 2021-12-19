@@ -37,4 +37,8 @@ export class ActionHistoryService {
   async remove(id: number): Promise<void> {
     await this.actionHistoryRepository.delete(id);
   }
+
+  async clear(): Promise<void> {
+    this.actionHistoryRepository.createQueryBuilder().softDelete();
+  }
 }

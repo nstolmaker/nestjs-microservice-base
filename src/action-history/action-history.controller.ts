@@ -30,4 +30,9 @@ export class ActionHistoryController {
   remove(@Param('id') id: string) {
     return this.actionHistoryService.remove(+id);
   }
+
+  @Delete('all')
+  clear() {
+    return this.actionHistoryService.clear();
+  }
 }

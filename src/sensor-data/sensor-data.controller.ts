@@ -30,4 +30,9 @@ export class SensorDataController {
   remove(@Param('id') id: string) {
     return this.sensorDataService.remove(+id);
   }
+
+  @Delete('all')
+  clear() {
+    return this.sensorDataService.clear();
+  }
 }
