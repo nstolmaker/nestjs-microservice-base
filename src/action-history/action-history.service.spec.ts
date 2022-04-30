@@ -15,4 +15,10 @@ describe('ActionHistoryService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+
+  it('should be defined', () => {
+    const pumpHistory = service.findByType('pump');
+    const pumpHistoryString = pumpHistory.toString();
+    expect(pumpHistoryString).not.toContain('lights');
+  });
 });

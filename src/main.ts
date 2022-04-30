@@ -5,7 +5,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: {
-      origin: 'https://nstolmaker.github.io',
+      origin: ['https://nstolmaker.github.io', 'https://hydroponode.link'],
     },
   });
 
